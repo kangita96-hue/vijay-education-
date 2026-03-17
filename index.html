@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vijay Education - Student Portal</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #eef3ff;
+    margin: 0;
+}
+
+header {
+    background: #1f3c88;
+    color: white;
+    padding: 15px;
+    position: relative;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.logo-img {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    background: #1f3c88;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: #1f3c88;
+    color: white;
+}
+
+.absent {
+    color: red;
+    font-weight: bold;
+}
+
+.result-box {
+    margin-top: 15px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo-text">Vijay Education - Student Portal</div>
+    <img src="logo.png" class="logo-img">
+</header>
+
+<div class="container" id="loginBox">
+    <h2>Login</h2>
+    <label>Enter Roll Number</label>
+    <input type="number" id="roll">
+    <button onclick="login()">Check Result</button>
+</div>
+
+<div class="container" id="resultBox" style="display:none;">
+    <h2>Student Details</h2>
+    <p><b>Name:</b> Angita Kumari</p>
+    <p><b>Roll No:</b> 73</p>
+
+    <div class="result-box" id="summary"></div>
+
+    <table>
+        <tr><th>Date</th><th>Marks</th></tr>
+
+        <tr><td>07 Sep 2025</td><td>62</td></tr>
+        <tr><td>14 Sep 2025</td><td>63</td></tr>
+        <tr><td>21 Sep 2025</td><td>54</td></tr>
+        <tr><td>28 Sep 2025</td><td class="absent">Absent</td></tr>
+
+        <tr><td>05 Oct 2025</td><td>61</td></tr>
+        <tr><td>12 Oct 2025</td><td>64</td></tr>
+        <tr><td>19 Oct 2025</td><td>58</td></tr>
+        <tr><td>26 Oct 2025</td><td class="absent">Absent</td></tr>
+
+        <tr><td>02 Nov 2025</td><td>60</td></tr>
+        <tr><td>09 Nov 2025</td><td>62</td></tr>
+        <tr><td>16 Nov 2025</td><td>59</td></tr>
+        <tr><td>23 Nov 2025</td><td>63</td></tr>
+        <tr><td>30 Nov 2025</td><td class="absent">Absent</td></tr>
+
+        <tr><td>07 Dec 2025</td><td>64</td></tr>
+        <tr><td>14 Dec 2025</td><td>61</td></tr>
+        <tr><td>21 Dec 2025</td><td>65</td></tr>
+        <tr><td>28 Dec 2025</td><td class="absent">Absent</td></tr>
+
+        <tr><td>04 Jan 2026</td><td>62</td></tr>
+        <tr><td>11 Jan 2026</td><td>60</td></tr>
+        <tr><td>18 Jan 2026</td><td>63</td></tr>
+        <tr><td>25 Jan 2026</td><td>59</td></tr>
+
+        <tr><td>01 Feb 2026</td><td>64</td></tr>
+        <tr><td>08 Feb 2026</td><td>62</td></tr>
+        <tr><td>15 Feb 2026</td><td class="absent">Absent</td></tr>
+        <tr><td>22 Feb 2026</td><td>61</td></tr>
+
+        <tr><td>08 Mar 2026</td><td class="absent">Absent</td></tr>
+        <tr><td>15 Mar 2026</td><td><b>52</b></td></tr>
+        <tr><td>22 Mar 2026</td><td><b>66</b></td></tr>
+
+    </table>
+
+    <button onclick="window.print()">Download / Print Result</button>
+</div>
+
+<script>
+function login() {
+    var roll = document.getElementById("roll").value;
+
+    if (roll == "73") {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("resultBox").style.display = "block";
+        calculateResult();
+    } else {
+        alert("Invalid Roll Number");
+    }
+}
+
+function calculateResult() {
+    let marks = [62,63,54,61,64,58,60,62,59,63,64,61,65,62,60,63,59,64,62,61,52,66];
+    let total = marks.reduce((a,b)=>a+b,0);
+    let avg = total / marks.length;
+
+    let status = avg >= 50 ? "PASS" : "FAIL";
+
+    document.getElementById("summary").innerHTML =
+        "Average Marks: " + avg.toFixed(2) + " / 100<br>Result Status: " + status;
+}
+</script>
+
+</body>
+</html>
