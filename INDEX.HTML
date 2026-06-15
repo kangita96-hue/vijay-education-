@@ -1,21 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Vijeta Test Series Result</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#4facfe,#00f2fe);
+margin:0;
+padding:0;
+}
+.container{
+max-width:900px;
+margin:50px auto;
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+h1{
+text-align:center;
+color:#ff5722;
+}
+input,button{
+padding:10px;
+margin:10px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+button{
+background:#4caf50;
+color:white;
+border:none;
+cursor:pointer;
+}
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+th{
+background:#673ab7;
+color:white;
+padding:10px;
+}
+td{
+padding:10px;
+text-align:center;
+}
+tr:nth-child(even){
+background:#f2f2f2;
+}
+.absent{
+color:red;
+font-weight:bold;
+}
+.present{
+color:green;
+font-weight:bold;
+}
+#result{
+display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="loginPage">
+<h1>Vijeta Test Series</h1>
+<h3>Student Result Portal</h3>
+
+<input type="password" id="pass" placeholder="Enter Password">
+<button onclick="login()">Login</button>
+</div>
+
+<div class="container" id="searchPage" style="display:none;">
+<h1>Open Result</h1>
+
+<input type="number" id="roll" placeholder="Enter Roll Number">
+<button onclick="showResult()">Open Result</button>
+
+<div id="result">
+<h2 style="color:#2196f3;">Angita Kumari</h2>
+<p><b>Batch:</b> 2025-2026</p>
+<p><b>Roll No:</b> 73</p>
+
 <table>
-    <tr>
-        <th>Date</th>
-        <th>Marks</th>
-    </tr>
+<tr>
+<th>Date</th>
+<th>Marks</th>
+<th>Status</th>
+</tr>
 
-    <tr><td>05 April 2026</td><td class="absent">Absent</td></tr>
-    <tr><td>12 April 2026</td><td class="good">59 / 100</td></tr>
-    <tr><td>19 April 2026</td><td class="good">64 / 100</td></tr>
-    <tr><td>26 April 2026</td><td class="good">66 / 100</td></tr>
+<tr><td>05-Apr-2026</td><td>-</td><td class="absent">Absent</td></tr>
+<tr><td>12-Apr-2026</td><td>59</td><td class="present">Present</td></tr>
+<tr><td>19-Apr-2026</td><td>64</td><td class="present">Present</td></tr>
+<tr><td>26-Apr-2026</td><td>66</td><td class="present">Present</td></tr>
 
-    <tr><td>03 May 2026</td><td class="good">67 / 100</td></tr>
-    <tr><td>10 May 2026</td><td class="good">68 / 100</td></tr>
-    <tr><td>17 May 2026</td><td class="good">66 / 100</td></tr>
+<tr><td>03-May-2026</td><td>62</td><td class="present">Present</td></tr>
+<tr><td>10-May-2026</td><td>63</td><td class="present">Present</td></tr>
+<tr><td>17-May-2026</td><td>67</td><td class="present">Present</td></tr>
+<tr><td>24-May-2026</td><td>-</td><td class="absent">Absent</td></tr>
+<tr><td>31-May-2026</td><td>-</td><td class="absent">Absent</td></tr>
 
-    <tr><td>24 May 2026</td><td class="absent">Absent</td></tr>
-    <tr><td>31 May 2026</td><td class="absent">Absent</td></tr>
+<tr><td>07-Jun-2026</td><td>70</td><td class="present">Present</td></tr>
+<tr><td>14-Jun-2026</td><td>65</td><td class="present">Present</td></tr>
 
-    <tr><td>07 June 2026</td><td class="good">70 / 100</td></tr>
-    <tr><td>14 June 2026</td><td class="good">45 / 100</td></tr>
 </table>
+</div>
+</div>
+
+<script>
+function login(){
+let p=document.getElementById("pass").value;
+if(p==="vijeta2026"){
+document.getElementById("loginPage").style.display="none";
+document.getElementById("searchPage").style.display="block";
+}
+else{
+alert("Wrong Password");
+}
+}
+
+function showResult(){
+let roll=document.getElementById("roll").value;
+if(roll=="73"){
+document.getElementById("result").style.display="block";
+}
+else{
+alert("Result Not Found");
+}
+}
+</script>
+
+</body>
+</html>
